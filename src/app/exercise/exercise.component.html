@@ -1,4 +1,17 @@
-
-<p>
-  exercise works!
-</p>
+<div class="exercise-container">
+    <ngb-tabset (tabChange)="changeTab($event)">
+        <ngb-tab title="Exercise 1" id="1">
+            <ng-template ngbTabContent>
+                <app-exercise-one></app-exercise-one>
+            </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Exercise 2" id="2">
+            <ng-template ngbTabContent>
+            </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Exercise 3" id="3">
+            <ng-template ngbTabContent>
+            </ng-template>
+        </ngb-tab>
+    </ngb-tabset>
+</div>

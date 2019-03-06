@@ -1,0 +1,14 @@
+:host /deep/ .exercise-container {
+    min-height: calc(100vh - 100px);
+    .nav-link.active {
+        border-top-color: #16acce;
+    }
+    .nav-link {
+        color: inherit;
+        border-top: 5px solid transparent;
+        padding: 1rem 2.5rem;
+        &:not(.active):hover {
+            border-color: transparent;
+        }
+    }
+}
