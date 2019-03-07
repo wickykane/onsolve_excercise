@@ -11,6 +11,6 @@ export class ExerciseTwoComponent implements OnInit {
   ngOnInit() {}
 
   loadIFrame(event) {
-    console.log(event.target.parentNode.classList.toggle('loaded'));;
+    console.log(event.target.parentNode.classList.toggle('loaded'));
   }
 }
