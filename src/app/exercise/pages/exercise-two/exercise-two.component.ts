@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./exercise-two.component.scss']
 })
 export class ExerciseTwoComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  loadIFrame(event) {
+    console.log(event.target.parentNode.classList.toggle('loaded'));;
   }
-
 }

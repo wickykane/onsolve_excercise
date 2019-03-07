@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { NgbTabset } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-exercise',
@@ -7,11 +8,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./exercise.component.scss']
 })
 export class ExerciseComponent implements OnInit {
-  constructor(private route: Router) {}
+  constructor(private route: Router, private activeRoute: ActivatedRoute) {}
+  @ViewChild('tabSet') tabSet: NgbTabset;
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.selectDefaultTab();
+  }
 
   changeTab(tabData) {
-    this.route.navigate(['exercise'], { queryParams: { tab: tabData.nextId }});
+    this.route.navigate(['exercise'], { queryParams: { tab: tabData.nextId } });
+  }
+
+  selectDefaultTab() {
+    setTimeout(() => {
+      this.tabSet.select(
+        String(this.activeRoute.snapshot.queryParams['tab'] || 1)
+      );
+    });
   }
 }

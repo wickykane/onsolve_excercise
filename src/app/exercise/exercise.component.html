@@ -1,5 +1,5 @@
 <div class="exercise-container">
-    <ngb-tabset (tabChange)="changeTab($event)">
+    <ngb-tabset #tabSet="ngbTabset" (tabChange)="changeTab($event)">
         <ngb-tab title="Exercise 1" id="1">
             <ng-template ngbTabContent>
                 <app-exercise-one></app-exercise-one>

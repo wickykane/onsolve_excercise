@@ -1,3 +1,4 @@
+import { ExerciseModule } from './../../exercise.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ExerciseOneComponent } from './exercise-one.component';
@@ -8,7 +9,7 @@ describe('ExerciseOneComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ExerciseOneComponent ]
+      imports: [ExerciseModule],
     })
     .compileComponents();
   }));

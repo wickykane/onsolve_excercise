@@ -19,6 +19,10 @@ describe('ExerciseTwoComponent', () => {
     fixture.detectChanges();
   });
 
+  afterEach(() => {
+    document.body.removeChild(fixture.debugElement.nativeElement);
+  });
+
   it('should create', () => {
     expect(component).toBeTruthy();
   });

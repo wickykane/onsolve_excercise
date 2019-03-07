@@ -7,6 +7,11 @@
     background-color: rgb(161, 163, 162);
     padding: 0;
     margin-bottom: 1rem;
+    &.loaded {
+        .loading {
+            display: none;
+        }
+    }
     .loading {
         position: absolute;
         top: 50%;
