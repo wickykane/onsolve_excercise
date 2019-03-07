@@ -1,9 +1,15 @@
 <div class="exercise-one-container">
     <div class="row">
+        <div class="col-md-12">
+            <p class="font-weight-bold"> Write a JavaScript function takes a string and return a new string with all vowels removed.</p>
+            <p class="font-weight-bold">Answer:</p>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-5">
             <div class="form-group">
                 <label for="input">Please Input Here: </label>
-                <textarea class="form-control" name="input" id="input" cols="30" rows="10"></textarea>
+                <textarea class="form-control" name="input" id="input" [(ngModel)]="inputText" cols="30" rows="10"></textarea>
             </div>
         </div>
         <div class="col-md-2 align-self-center text-center">
@@ -13,8 +19,8 @@
         </div>
         <div class="col-md-5">
             <div class="form-group">
-                <label for="input">Result: </label>
-                <textarea class="form-control" name="input" id="input" cols="30" rows="10"></textarea>
+                <label for="result">Result: </label>
+                <textarea class="form-control" name="result" id="result" cols="30" rows="10">{{inputText | removeVowel}}</textarea>
             </div>
         </div>
     </div>

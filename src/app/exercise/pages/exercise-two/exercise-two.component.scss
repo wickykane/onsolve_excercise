@@ -1,0 +1,20 @@
+.exercise-two-container {
+    padding: 1rem 2rem;
+}
+
+.code-editor {
+    height: 300px;
+    background-color: rgb(161, 163, 162);
+    padding: 0;
+    margin-bottom: 1rem;
+    .loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    iframe {
+        position: absolute;
+        width: 100%;
+    }
+}

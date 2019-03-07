@@ -6,10 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./exercise-one.component.scss']
 })
 export class ExerciseOneComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  public inputText: string;
+  ngOnInit() {}
 }
