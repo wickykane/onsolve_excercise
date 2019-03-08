@@ -9,6 +9,10 @@ const routes: Routes = [
     path: 'exercise',
     loadChildren: './exercise/exercise.module#ExerciseModule'
   },
+  {
+    path: 'marvel',
+    loadChildren: './marvel/marvel.module#MarvelModule'
+  },
   { path: '**', component: NotFoundComponent }
 ];
 

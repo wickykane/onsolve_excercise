@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="exercise-container">
     <ngb-tabset #tabSet="ngbTabset" (tabChange)="changeTab($event)">
         <ngb-tab title="Exercise 1" id="1">
@@ -12,7 +13,9 @@
         </ngb-tab>
         <ngb-tab title="Exercise 3" id="3">
             <ng-template ngbTabContent>
+                <app-exercise-three></app-exercise-three>
             </ng-template>
         </ngb-tab>
     </ngb-tabset>
 </div>
+<app-footer></app-footer>

@@ -1,11 +1,13 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule} from '@angular/core';
-import { HeaderComponent, FooterComponent, NotFoundComponent } from './components';
+import { NotFoundComponent } from './components';
 import { RouterModule } from '@angular/router';
+import { ApiService } from './services';
 
 @NgModule({
-  imports: [RouterModule ],
-  exports: [HeaderComponent, FooterComponent, NotFoundComponent],
-  declarations: [HeaderComponent, FooterComponent, NotFoundComponent],
-  providers: []
+  imports: [RouterModule, HttpClientModule],
+  exports: [NotFoundComponent],
+  declarations: [NotFoundComponent],
+  providers: [ApiService]
 })
 export class CoreModule {}

@@ -1,0 +1,85 @@
+<div class="marvel-container">
+    <div class="row mg-top-10">
+        <div class="col-12">
+            <div class="card no-border">
+                <div class="card-header">
+                    <strong>Line Items</strong>
+                </div>
+                <div class="card-body no-padding">
+                    <div class="table-responsive list">
+                        <table class="table table-bordered table-order" cdArrowTable [collection]="_data['list_item']" [(selectedIndex)]="selectedIndex">
+                            <thead class="bg-white">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Carrier Name</th>
+                                    <th>Contact Person</th>
+                                    <th>Contact Email</th>
+                                    <th>Contact Phone</th>
+                                    <th>Own Carrier</th>
+                                    <th>Last Updated By</th>
+                                    <th>Last Updated On</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor="let item of _data['list_item']; let i = index;" [ngClass]="{'row-selected': i == selectedIndex}">
+                                <tr>
+                                    <td>
+                                        {{ item.id }}
+                                    </td>
+                                    <td>
+                                        {{ item.name }}
+                                    </td>
+                                    <td>
+                                        {{ item.ctt_person }}
+                                    </td>
+                                    <td>
+                                        {{ item.ctt_email }}
+                                    </td>
+                                    <td>
+                                        {{ item.ctt_phone }}
+                                    </td>
+                                    <td>
+                                        {{ item.own_carrier }}
+                                    </td>
+                                    <td>
+                                        {{ item.updated_dt }}
+                                    </td>
+                                    <td>
+                                        {{ item.crtd_by_name }}
+                                    </td>
+                                    <td>
+                                        <a *ngIf="listMaster['permission'].edit" href="javascript:void(0)" class="btn btn-default " title="Edit" [routerLink]="['/admin-panel/carrier/edit/' + item.id]">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        </a>
+                                        <a *ngIf="!listMaster['permission'].edit" href="javascript:void(0)"></a>
+                                    </td>
+                                </tr>
+                                <tr *ngIf="!_data['list_item']?.length" class="text-center">
+                                    <td colspan="9">No data</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row normal-pagination mg-top-10" *ngIf="_data['list_item']?.length">
+        <div class="col-md-6">
+            <div class="text-left">
+                <div class="col-md-6" style="padding-left: 0px;">
+                    <span style="float: left; padding-right: 10px;">{{_data['list_item']?.length}}/{{tableService.pagination.total_record}} items </span>
+                    <select style="width: 50px; float: left;" class="form-control" [(ngModel)]="tableService.pagination.length" (change)="tableService.changeLength()">
+                                <option *ngFor="let option of tableService.itemPerPageOptions" [ngValue]="option">{{option}}</option>
+                            </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="text-right">
+                <ngb-pagination class="d-flex justify-content-end" (pageChange)="tableService.changePage($event)" [pageSize]="tableService.pagination.length" [collectionSize]="tableService.pagination.total_record || 120" [(page)]="tableService.pagination.page" [maxSize]="tableService.maxSize"
+                    [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
+            </div>
+        </div>
+    </div>
+</div>
