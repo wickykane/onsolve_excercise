@@ -32,7 +32,7 @@ export class cdArrowTable implements OnDestroy {
 
   @Input() set collection(value: any) {
     this._collection = value;
-    const newValue = value.length;
+    const newValue = (value || []).length;
     this.selectedIndex > newValue - 1
       ? (this.selectedIndex = newValue - 1)
       : (this.selectedIndex = 0);

@@ -48,10 +48,6 @@
                                         {{ item.crtd_by_name }}
                                     </td>
                                     <td>
-                                        <a *ngIf="listMaster['permission'].edit" href="javascript:void(0)" class="btn btn-default " title="Edit" [routerLink]="['/admin-panel/carrier/edit/' + item.id]">
-                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                                        </a>
-                                        <a *ngIf="!listMaster['permission'].edit" href="javascript:void(0)"></a>
                                     </td>
                                 </tr>
                                 <tr *ngIf="!_data['list_item']?.length" class="text-center">
@@ -68,8 +64,8 @@
         <div class="col-md-6">
             <div class="text-left">
                 <div class="col-md-6" style="padding-left: 0px;">
-                    <span style="float: left; padding-right: 10px;">{{_data['list_item']?.length}}/{{tableService.pagination.total_record}} items </span>
-                    <select style="width: 50px; float: left;" class="form-control" [(ngModel)]="tableService.pagination.length" (change)="tableService.changeLength()">
+                <span style="float: left; padding-right: 10px;">{{_data['list_item']?.length}}/{{tableService.pagination[tableService.paginationConfig['total_record']]}} items </span>
+                    <select style="width: 50px; float: left;" class="form-control" [(ngModel)]="tableService.pagination[tableService.paginationConfig['length']]" (change)="tableService.changeLength()">
                                 <option *ngFor="let option of tableService.itemPerPageOptions" [ngValue]="option">{{option}}</option>
                             </select>
                 </div>

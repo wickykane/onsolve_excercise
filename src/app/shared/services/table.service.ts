@@ -20,7 +20,7 @@ export class TableService {
     order: 'orderBy',
     sort: 'sort',
     total_page: 'count',
-    total_record: 'total_record',
+    total_record: 'count',
   };
 
   private pagination = {};
