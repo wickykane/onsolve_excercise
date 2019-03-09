@@ -3,8 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve -o --port=1010 --source-map=false",
+    "start": "node server.js",
+    "serve": "ng serve -o --port=1010 --source-map=false",
     "build": "ng build",
+    "postinstall": "ng build --aot -prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -25,6 +27,8 @@
     "angular2-hotkeys": "^2.1.4",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
+    "express": "^4.16.4",
+    "path": "^0.12.7",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"
   },
