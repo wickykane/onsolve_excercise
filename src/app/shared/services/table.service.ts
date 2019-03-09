@@ -7,7 +7,7 @@ export class TableService {
   private itemPerPageOptions = [15, 30, 50, 100];
   private maxSize = 5;
 
-  private sortParams = {};
+  public sortParams = {};
 
   private paginationConfig: any = {
     context: null,
