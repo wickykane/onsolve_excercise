@@ -16,18 +16,22 @@ export class TableService {
     context: null,
     fnName: 'getList',
     length: 'limit',
-    page: 'offset',
+    page: 'page',
+    offset: 'offset',
     order: 'orderBy',
     sort: 'sort',
-    total_page: 'count',
-    total_record: 'count',
+    total_page: 'total_page',
+    total_record: 'total'
   };
 
-  private pagination = {};
+  private pagination = {
+    page: 1,
+    length: 15
+  };
 
   init(config?) {
     if (config) {
-      this.paginationConfig = {  ...this.paginationConfig, ...config };
+      this.paginationConfig = { ...this.paginationConfig, ...config };
     }
   }
 
@@ -37,16 +41,21 @@ export class TableService {
 
   getParams() {
     const params = {};
-    params[this.paginationConfig.page] = this.pagination[this.paginationConfig.page] || 1;
-    params[this.paginationConfig.length] = this.pagination[this.paginationConfig.length] || 15;
+    // params[this.paginationConfig.page] = this.pagination['page'] || 1;
+    params[this.paginationConfig.length] = this.pagination['length'];
+    params[this.paginationConfig.offset] =
+    (this.pagination['page'] - 1) * this.pagination['length'];
 
     /* check sort */
     if (this.sortParams[this.paginationConfig.order]) {
-      params[this.paginationConfig.order] = this.sortParams[this.paginationConfig.order];
-    } 
+      params[this.paginationConfig.order] = this.sortParams[
+        this.paginationConfig.order
+      ];
+    }
 
     if (this.sortParams[this.paginationConfig.sort]) {
-      params[this.paginationConfig.sort] = this.sortParams[this.paginationConfig.sort] === 1 ? 'asc' : 'desc';
+      params[this.paginationConfig.sort] =
+        this.sortParams[this.paginationConfig.sort] === 1 ? 'asc' : 'desc';
     }
 
     return params;
@@ -63,16 +72,20 @@ export class TableService {
 
   matchPagingOption(options) {
     try {
-      this.pagination[this.paginationConfig.total_page] = options[this.paginationConfig.total_page];
-      this.pagination[this.paginationConfig.total_record] = options[this.paginationConfig.total_record];
-      this.pagination[this.paginationConfig.page] = options[this.paginationConfig.page];
+      this.pagination['total_page'] = Math.round(
+        options[this.paginationConfig.total_record] /
+          options[this.paginationConfig.length]
+      );
+      this.pagination['total_record'] =
+        options[this.paginationConfig.total_record];
+      this.pagination['length'] = options[this.paginationConfig.length];
     } catch (e) {
       console.log('pagination', e);
     }
   }
 
   changePage(index) {
-    this.pagination[this.paginationConfig.page] = index;
+    this.pagination['page'] = index;
     this.invokeGetList();
   }
 }

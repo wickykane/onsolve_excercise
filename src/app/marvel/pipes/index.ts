@@ -1,1 +1,1 @@
-export * from './remove-vowel.pipe';
+export * from './text-truncate.pipe';

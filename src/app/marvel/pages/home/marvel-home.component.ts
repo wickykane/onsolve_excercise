@@ -26,9 +26,12 @@ export class MarvelHomeComponent implements OnInit {
   }
 
   getListMarvelCharacters() {
+    this._data['loading'] = true;
     const params = { ...this.tableService.getParams() };
     this.marvelService.getListCharacter(params).subscribe(res => {
       this._data['list_item'] = res.data.results;
+      this._data['loading'] = false;
+      this.tableService.matchPagingOption(res.data);
     });
   }
 }

@@ -12,6 +12,7 @@ declare var jQuery: any;
 
 // tslint:disable-next-line:directive-selector
 @Directive({
+  // tslint:disable-next-line:directive-selector
   selector: '[cdArrowTable]',
   providers: [HotkeysService],
   exportAs: 'cdArrowTable'

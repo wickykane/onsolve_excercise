@@ -4,13 +4,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { MarvelHomeComponent } from './pages';
+import { MarvelHomeComponent, CharacterDetailComponent } from './pages';
 import { MarvelHeaderComponent, MarvelFooterComponent } from './components';
-
-import { RemoveVowelPipe } from './pipes/remove-vowel.pipe';
 import { MarvelComponent } from './marvel.component';
 import { HotkeyModule } from 'angular2-hotkeys';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { TextTruncatePipe } from './pipes';
+
 
 @NgModule({
   imports: [CommonModule, FormsModule, MarvelRoutingModule, HotkeyModule, SharedModule, NgbPaginationModule],
@@ -19,7 +19,8 @@ import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
     MarvelHomeComponent,
     MarvelHeaderComponent,
     MarvelFooterComponent,
-    RemoveVowelPipe
+    CharacterDetailComponent,
+    TextTruncatePipe
   ],
 })
 export class MarvelModule {}
