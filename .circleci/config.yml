@@ -34,7 +34,7 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: yarn test
+      - run: yarn test -- --watch=false --progress=false --browsers=ChromeHeadlessCI
   deploy:
       docker:
         - image: buildpack-deps:trusty
@@ -47,3 +47,4 @@ jobs:
             environment:
               $HEROKU_API_KEY: 6bb4f2bd-eb1f-40a5-bfee-92d9e3040693
               $HEROKU_APP_NAME: onsolve
+              CHROME_BIN: /usr/bin/google-chrome
