@@ -48,3 +48,14 @@ jobs:
               $HEROKU_API_KEY: 6bb4f2bd-eb1f-40a5-bfee-92d9e3040693
               $HEROKU_APP_NAME: onsolve
               CHROME_BIN: /usr/bin/google-chrome
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
