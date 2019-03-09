@@ -10,6 +10,7 @@ import { MarvelComponent } from './marvel.component';
 import { HotkeyModule } from 'angular2-hotkeys';
 import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { TextTruncatePipe } from './pipes';
+import { MarvelService } from '../core/services';
 
 
 @NgModule({
@@ -22,5 +23,6 @@ import { TextTruncatePipe } from './pipes';
     CharacterDetailComponent,
     TextTruncatePipe
   ],
+  providers: [MarvelService]
 })
 export class MarvelModule {}

@@ -7,10 +7,7 @@ export class TableService {
   private itemPerPageOptions = [15, 30, 50, 100];
   private maxSize = 5;
 
-  private sortParams = {
-    order: null,
-    sort: null
-  };
+  private sortParams = {};
 
   private paginationConfig: any = {
     context: null,
@@ -47,10 +44,8 @@ export class TableService {
     (this.pagination['page'] - 1) * this.pagination['length'];
 
     /* check sort */
-    if (this.sortParams[this.paginationConfig.order]) {
-      params[this.paginationConfig.order] = this.sortParams[
-        this.paginationConfig.order
-      ];
+    if (this.sortParams['order']) {
+      params[this.paginationConfig.order] = this.sortParams['order'];
     }
 
     if (this.sortParams[this.paginationConfig.sort]) {

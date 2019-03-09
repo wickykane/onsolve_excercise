@@ -64,16 +64,34 @@ export class cdArrowTable implements OnDestroy {
     return Array.from(this._hotkeysService.hotkeys);
   }
 
+  invokeScroll() {
+    const element = this.element.nativeElement.querySelectorAll('tbody')[this._selectedIndex];
+    const offset = 45;
+    const bodyRect = document.body.getBoundingClientRect().top;
+    const elementRect = element.getBoundingClientRect().top;
+    const elementPosition = elementRect - bodyRect;
+    const offsetPosition = elementPosition - offset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  }
+
   hotKeyConfig() {
     this._hotkeysService.add(
       new Hotkey(
-        'up',
-        (event: KeyboardEvent): boolean => {
+        'shift+tab',
+        (event: KeyboardEvent): ExtendedKeyboardEvent => {
           if (this._selectedIndex === 0 || this.disabledKey) {
             return;
           }
           this._selectedIndex--;
           this.selectedIndexChange.emit(this._selectedIndex);
+          this.invokeScroll();
+          const e: ExtendedKeyboardEvent = event;
+          e.returnValue = false;
+          return e;
         },
         undefined,
         'Up'
@@ -82,8 +100,8 @@ export class cdArrowTable implements OnDestroy {
 
     this._hotkeysService.add(
       new Hotkey(
-        'down',
-        (event: KeyboardEvent): boolean => {
+        'tab',
+        (event: KeyboardEvent): ExtendedKeyboardEvent => {
           if (
             this._collection.length === 0 ||
             this._selectedIndex === this._collection.length - 1 ||
@@ -93,6 +111,10 @@ export class cdArrowTable implements OnDestroy {
           }
           this._selectedIndex++;
           this.selectedIndexChange.emit(this._selectedIndex);
+          this.invokeScroll();
+          const e: ExtendedKeyboardEvent = event;
+          e.returnValue = false;
+          return e;
         },
         undefined,
         'Down'
@@ -101,7 +123,7 @@ export class cdArrowTable implements OnDestroy {
 
     this._hotkeysService.add(
       new Hotkey(
-        'space',
+        'enter',
         (event: KeyboardEvent): boolean => {
           if (this._selectedIndex >= 0) {
             this.onEnter.emit(this._selectedIndex);
