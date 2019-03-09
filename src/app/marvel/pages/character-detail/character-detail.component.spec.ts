@@ -1,3 +1,4 @@
+import { MarvelModule } from './../../marvel.module';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CharacterDetailComponent } from './character-detail.component';
@@ -8,7 +9,7 @@ describe('CharacterDetailComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CharacterDetailComponent ]
+      imports: [MarvelModule]
     })
     .compileComponents();
   }));
