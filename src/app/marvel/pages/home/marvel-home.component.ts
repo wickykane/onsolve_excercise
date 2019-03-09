@@ -14,7 +14,7 @@ export class MarvelHomeComponent implements OnInit {
   constructor(
     private router: Router,
     private marvelService: MarvelService,
-    private tableService: TableService,
+    public tableService: TableService,
   ) {
     this.tableService.init({
       context: this,
