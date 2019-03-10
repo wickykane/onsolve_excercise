@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "serve": "ng serve -o --port=1010 --source-map=false",
+    "serve": "ng serve -o --port=1010",
     "build": "ng build",
     "postinstall": "ng build --aot --prod",
     "test": "ng test",

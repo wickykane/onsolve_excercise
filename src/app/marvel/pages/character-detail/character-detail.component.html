@@ -19,7 +19,7 @@
                   <img style="min-width: 100px" width="100" class="img-thumbnail"
                     [src]="[item.thumbnail.path, item.thumbnail.extension].join('.')" alt="{{ item.name }}">
                 </div>
-                <p class="pl-3 pr-3 d-flex align-items-center"> {{item.description}}</p>
+                <p class="pl-3 pr-3 d-flex align-items-center" [innerHTML]="item.description"></p>
               </div>
             </li>
           </ul>
