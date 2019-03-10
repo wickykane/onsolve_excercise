@@ -10,3 +10,13 @@ html, body {
     margin: 0;
 }
 
+.github-icon {
+    font-size: 2.5rem;
+    align-items: center;
+    display: flex;
+    color: #000;
+    transition: all .2s ease-in-out;
+    &:hover {
+        color: #000;
+    } 
+}
